@@ -14,19 +14,18 @@
   <meta property="og:image" content="assets/images/hero.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=2025_v8">
+  <link rel="stylesheet" href="styles.css?v=2025_v18">
 
   <!-- Favicon / Icons -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23152668'/><text x='50%' y='65%' font-size='60' font-weight='bold' text-anchor='middle' fill='%23f2c84a'>E</text></svg>">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
   <!-- ==================== HEADER & NAVIGATION ==================== -->
   <header class="header" id="header">
     <div class="container nav-container">
-      <a href="#home" class="logo">
-        <span class="logo-badge">€</span>
-        ESQUADRI<span>EURO</span>
+      <a href="#home" class="logo-brand" title="Esquadrieuro">
+        <img src="assets/images/logo-horizontal-original.png" alt="Esquadrieuro" class="logo-img logo-img--header">
       </a>
 
       <nav class="nav-menu" id="nav-menu">
@@ -56,115 +55,187 @@
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION ==================== -->
-  <section class="hero" id="home">
-    <div class="hero-split-bg"></div>
-    <div class="hero-left-pattern"></div>
-
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-trust-badges">
-          <span class="hero-badge-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            Excelência desde 2015 em SC
-          </span>
-          <span class="hero-badge-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path></svg>
-            Fábrica Própria & Tecnologia CNC
-          </span>
-          <span class="hero-badge-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            Garantia de Estanqueidade & Vedação
-          </span>
+  <!-- ==================== HERO — CLEAN WHITE BACKGROUND & FACHADA POWERCLIP ==================== -->
+  <section class="hero-v2 hero-v2--clean" id="home">
+    <div class="container hero-v2-inner">
+      <div class="hero-v2-content reveal-up">
+        <div class="hero-v2-eyebrow">
+          <span class="hero-v2-dot"></span>
+          Fábrica Própria &bull; Desde 2015 &bull; São Francisco do Sul, SC
         </div>
 
-        <h1 class="hero-title">
-          Seu projeto merece a precisão e o luxo das <span>melhores esquadrias</span>
+        <h1 class="hero-v2-title">
+          A arte da <em>precisão</em><br>
+          em esquadrias e vidro
         </h1>
 
-        <p class="hero-description">
-          Esquadrias de Alumínio sob medida, Vidro Temperado de alta resistência e distribuição completa de ferragens e acessórios para construção civil em São Francisco do Sul e região.
+        <p class="hero-v2-sub">
+          Fabricação sob medida de esquadrias de alto padrão com usinagem CNC, vidro temperado de segurança, fechaduras Stam e ferragens para residências e edifícios em todo o litoral norte de SC.
         </p>
 
-        <div class="hero-actions">
-          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20projeto." target="_blank" class="btn btn-primary" id="hero-btn-orcamento">
-            Falar com Especialista
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        <div class="hero-v2-ctas">
+          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20projeto." target="_blank" class="btn-v2 btn-v2-gold" id="hero-btn-orcamento">
+            Solicitar Orçamento
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <a href="#produtos" class="btn btn-outline-navy" id="hero-btn-catalogo">
-            Ver Catálogo de Produtos 2025
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <a href="catalogo.html" class="btn-v2 btn-v2-outline" id="hero-btn-catalogo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Ver Catálogo 2025
           </a>
+        </div>
+
+        <div class="hero-trust-chips">
+          <div class="hero-trust-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Anti-Maresia 100% Inox 304</span>
+          </div>
+          <div class="hero-trust-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Linhas Suprema & Gold Sob Medida</span>
+          </div>
+          <div class="hero-trust-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Montagem e Equipe Técnica Própria</span>
+          </div>
         </div>
       </div>
 
-      <!-- Espaço quadrado com bordas arredondadas para foto da empresa -->
-      <div class="hero-media">
-        <div class="hero-square-card">
-          <img src="assets/images/empresa.jpg" alt="Sede e Fábrica Própria da Esquadrieuro em São Francisco do Sul" class="hero-square-img" id="hero-empresa-img">
-          <div class="hero-square-tag">
-            <span class="hero-square-dot"></span>
-            <span>Fábrica & Showroom Esquadrieuro</span>
+      <!-- Powerclip da Fachada -->
+      <div class="hero-powerclip-wrap reveal-up" style="animation-delay:.15s">
+        <div class="hero-powerclip-decor"></div>
+        <div class="hero-powerclip-frame">
+          <img src="assets/images/hero.png" alt="Fachada de alto padrão em esquadrias de alumínio e vidro temperado" class="hero-powerclip-img" fetchpriority="high">
+          
+          <div class="hero-powerclip-tag">
+            <div class="hero-powerclip-tag-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <div>
+              <strong>Fachadas & Panos de Vidro</strong>
+              <span>Projetos Litorâneos de Alto Padrão</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STATS STRIP ==================== -->
-  <section class="stats-strip">
+  <!-- ==================== INDICADORES DE CREDIBILIDADE ==================== -->
+  <section class="trust-bar">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">+10 Anos</div>
-          <div class="stat-label">De tradição e liderança no litoral de SC</div>
+      <div class="trust-bar-grid">
+        <div class="trust-item reveal-up">
+          <span class="trust-number">+10</span>
+          <span class="trust-unit">anos</span>
+          <span class="trust-label">de liderança no litoral de SC</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">+1.500</div>
-          <div class="stat-label">Projetos e obras executadas com excelência</div>
+        <div class="trust-item reveal-up" style="animation-delay:.05s">
+          <span class="trust-number">1.500+</span>
+          <span class="trust-unit">obras</span>
+          <span class="trust-label">residenciais e comerciais entregues</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Produção própria com maquinário CNC de alta precisão</div>
+        <div class="trust-item reveal-up" style="animation-delay:.1s">
+          <span class="trust-number">100%</span>
+          <span class="trust-unit">CNC</span>
+          <span class="trust-label">usinagem digital e corte de precisão</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">Litoral Norte</div>
-          <div class="stat-label">Atendimento em São Francisco do Sul, Joinville e região</div>
+        <div class="trust-item reveal-up" style="animation-delay:.15s">
+          <span class="trust-number">SC</span>
+          <span class="trust-unit">litoral</span>
+          <span class="trust-label">São Francisco, Joinville e região</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORIAS VISUAIS DE PRODUTO ==================== -->
+  <section class="showcase section-padding" id="solucoes">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="eyebrow">Nossos Produtos</span>
+        <h2 class="section-title">Soluções Completas em Alumínio e Vidro</h2>
+        <p class="section-subtitle">Projetos sob medida para residências de alto padrão, corporativos e empreendimentos litorâneos.</p>
+      </div>
+      <div class="showcase-grid">
+        <a href="#produtos" class="showcase-card reveal-up">
+          <img src="assets/images/janelas.png" alt="Janelas de alumínio de alto desempenho" loading="lazy">
+          <div class="showcase-card-overlay">
+            <h3>Janelas</h3>
+            <span>Maxim-ar, correr & guilhotina</span>
+          </div>
+        </a>
+        <a href="#produtos" class="showcase-card showcase-card--tall reveal-up" style="animation-delay:.06s">
+          <img src="assets/images/portas.png" alt="Portas de alumínio pivotante e de correr" loading="lazy">
+          <div class="showcase-card-overlay">
+            <h3>Portas</h3>
+            <span>Pivotantes, correr & pele de vidro</span>
+          </div>
+        </a>
+        <a href="#produtos" class="showcase-card reveal-up" style="animation-delay:.12s">
+          <img src="assets/images/fachadas.png" alt="Fachadas em pele de vidro" loading="lazy">
+          <div class="showcase-card-overlay">
+            <h3>Fachadas</h3>
+            <span>Pele de vidro & glazing</span>
+          </div>
+        </a>
+        <a href="#produtos" class="showcase-card reveal-up" style="animation-delay:.18s">
+          <img src="assets/images/sacadas.png" alt="Envidraçamento de sacadas" loading="lazy">
+          <div class="showcase-card-overlay">
+            <h3>Sacadas</h3>
+            <span>Envidraçamento retrátil</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ==================== A EMPRESA / SOBRE NÓS ==================== -->
-  <section class="about section-padding" id="empresa">
+  <section class="about-v2 section-padding" id="empresa">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-image-wrapper">
-          <img src="assets/images/fabrica.png" alt="Parque fabril de ponta da Esquadrieuro">
-          <div class="about-floating-card">
-            <div class="icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+      <div class="about-v2-grid">
+        <div class="about-v2-media reveal-up">
+          <div class="about-v2-img-wrap">
+            <img src="assets/images/empresa.jpg" alt="Fábrica Esquadrieuro - São Francisco do Sul" loading="lazy">
+          </div>
+          <div class="about-v2-floating">
+            <div class="about-v2-floating-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </div>
             <div>
-              <h4>Fábrica Euroframes Especializada</h4>
-              <p>Corte, usinagem computadorizada e montagem técnica rigorosa.</p>
+              <strong>Fábrica Euroframes</strong>
+              <span>Usinagem CNC e montagem técnica</span>
             </div>
           </div>
         </div>
 
-        <div class="about-content">
+        <div class="about-v2-content reveal-up" style="animation-delay:.1s">
           <span class="eyebrow">Sobre a Empresa</span>
-          <h2 class="section-title">Qualidade, Tecnologia e Design desde 2015</h2>
+          <h2 class="section-title">Qualidade, Tecnologia<br>e Design desde 2015</h2>
           <p class="about-text">
-            Sediada estrategicamente em São Francisco do Sul - SC, a <strong>Esquadrieuro</strong> une a robustez industrial de uma fábrica própria equipada com centros de usinagem avançados à sensibilidade arquitetônica requerida pelos projetos residenciais e corporativos contemporâneos.
+            Sediada em São Francisco do Sul — SC, a <strong>Esquadrieuro</strong> une robustez industrial de uma fábrica própria com centros de usinagem avançados à sensibilidade arquitetônica de projetos residenciais e corporativos contemporâneos.
           </p>
           <p class="about-text">
-            Além de fabricarmos esquadrias de alto padrão (Linhas Suprema, Gold e Minimalistas), somos distribuidores autorizados de ferragens, fechaduras Stam, silicones e guarnições para profissionais e construtoras através da nossa divisão <strong>Esquadrieuro Store</strong>.
+            Além de fabricarmos esquadrias de alto padrão (Linhas Suprema, Gold e Minimalistas), somos distribuidores autorizados de ferragens, fechaduras Stam, silicones e guarnições pela nossa divisão <strong>Esquadrieuro Store</strong>.
           </p>
 
-          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20mais%20sobre%20a%20f%C3%A1brica%20da%20Esquadrieuro" target="_blank" class="btn btn-outline" id="about-btn-historia">
+          <div class="about-v2-highlights">
+            <div class="about-v2-highlight">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Anti-Maresia 100% Inox 304</span>
+            </div>
+            <div class="about-v2-highlight">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Corte & Usinagem CNC</span>
+            </div>
+            <div class="about-v2-highlight">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Vedação EPDM & Estanqueidade</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20mais%20sobre%20a%20f%C3%A1brica%20da%20Esquadrieuro" target="_blank" class="btn-v2 btn-v2-navy" id="about-btn-historia">
             Conhecer Nossa Estrutura
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
       </div>
@@ -175,15 +246,15 @@
   <section class="founders-section section-padding" id="proprietarios">
     <div class="container">
       <div class="founders-grid">
-        <div class="founders-image-box">
-          <img src="assets/images/proprietarios.jpg" alt="Diretoria e Sócios Proprietários da Esquadrieuro" id="founders-display-img">
+        <div class="founders-image-box reveal-up">
+          <img src="assets/images/proprietarios.jpg?v=2026_v1" alt="Diretoria e Sócios Proprietários da Esquadrieuro" id="founders-display-img">
           <div class="founders-badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             Sócios-Proprietários
           </div>
         </div>
 
-        <div class="founders-content">
+        <div class="founders-content reveal-up" style="animation-delay:.1s">
           <span class="eyebrow">Liderança & Compromisso</span>
           <h2 class="section-title" id="founders-title">A Presença dos Fundadores em Cada Detalhe</h2>
           
@@ -212,7 +283,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20diretamente%20com%20a%20equipe%20de%20dire%C3%A7%C3%A3o%20da%20Esquadrieuro" target="_blank" class="btn btn-primary">
+          <a href="https://wa.me/5547984474374?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20diretamente%20com%20a%20equipe%20de%20dire%C3%A7%C3%A3o%20da%20Esquadrieuro" target="_blank" class="btn-v2 btn-v2-gold">
             Falar com a Diretoria no WhatsApp
           </a>
         </div>
@@ -221,45 +292,46 @@
   </section>
 
   <!-- ==================== POR QUE NOS ESCOLHER (DIFERENCIAIS) ==================== -->
-  <section class="differentials section-padding" id="diferenciais">
+  <section class="diff-v2 section-padding" id="diferenciais">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal-up">
         <span class="eyebrow">Por Que Nos Escolher</span>
-        <h2 class="section-title">Engenharia e Acabamento de Alto Nível</h2>
+        <h2 class="section-title">Engenharia e Acabamento<br>de Alto Nível</h2>
         <p class="section-subtitle">Soluções pensadas para enfrentar as exigências climáticas e arquitetônicas do litoral catarinense.</p>
       </div>
 
-      <div class="diff-grid">
-        <div class="diff-card">
-          <div class="diff-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+      <div class="diff-v2-grid">
+        <div class="diff-v2-card reveal-up">
+          <div class="diff-v2-num">01</div>
+          <div class="diff-v2-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
           </div>
-          <h3 class="diff-title">Produção Própria CNC</h3>
-          <p class="diff-desc">Equipamentos de corte e usinagem com controle digital para encaixes perfeitos e folgas milimétricas.</p>
+          <h3>Produção Própria CNC</h3>
+          <p>Equipamentos de corte e usinagem com controle digital para encaixes perfeitos e folgas milimétricas.</p>
         </div>
-
-        <div class="diff-card">
-          <div class="diff-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <div class="diff-v2-card reveal-up" style="animation-delay:.06s">
+          <div class="diff-v2-num">02</div>
+          <div class="diff-v2-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           </div>
-          <h3 class="diff-title">Resistência à Maresia</h3>
-          <p class="diff-desc">Alumínio com anodização classe especial, pintura eletrostática e parafusos e componentes 100% Inox 304.</p>
+          <h3>Resistência à Maresia</h3>
+          <p>Alumínio com anodização classe especial, pintura eletrostática e componentes 100% Inox 304.</p>
         </div>
-
-        <div class="diff-card">
-          <div class="diff-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+        <div class="diff-v2-card reveal-up" style="animation-delay:.12s">
+          <div class="diff-v2-num">03</div>
+          <div class="diff-v2-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
           </div>
-          <h3 class="diff-title">Vedação Acústica EPDM</h3>
-          <p class="diff-desc">Guarnições e escovas de alta densidade que bloqueiam ruídos urbanos e infiltrações de chuva de vento.</p>
+          <h3>Vedação Acústica EPDM</h3>
+          <p>Guarnições e escovas de alta densidade que bloqueiam ruídos urbanos e infiltrações de chuva.</p>
         </div>
-
-        <div class="diff-card">
-          <div class="diff-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <div class="diff-v2-card reveal-up" style="animation-delay:.18s">
+          <div class="diff-v2-num">04</div>
+          <div class="diff-v2-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
           </div>
-          <h3 class="diff-title">Instalação & Garantia</h3>
-          <p class="diff-desc">Equipe técnica própria com treinamento contínuo, assegurando um acabamento limpo e garantia real.</p>
+          <h3>Instalação & Garantia</h3>
+          <p>Equipe técnica própria com treinamento contínuo, acabamento limpo e garantia real de estanqueidade.</p>
         </div>
       </div>
     </div>
@@ -282,6 +354,10 @@
         </div>
 
         <div class="catalog-actions-bar">
+          <a href="catalogo.html" class="btn btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Página de Catálogo com Filtros
+          </a>
           <button class="btn btn-outline" id="btn-download-catalog">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Baixar Catálogo PDF 2025
@@ -304,6 +380,24 @@
       <!-- Grid de Produtos Renderizado Dinamicamente -->
       <div class="catalog-products-grid" id="catalog-container">
         <!-- Inserido dinamicamente via JS -->
+      </div>
+
+      <!-- Barra de Expansão / Ações do Catálogo -->
+      <div class="catalog-expand-footer" id="catalog-expand-footer">
+        <div class="catalog-expand-info">
+          <span class="catalog-count-badge" id="catalog-count-badge">Mostrando 12 de 224 produtos</span>
+          <p class="catalog-expand-hint">Navegue pelas 3 primeiras fileiras ou expanda o catálogo completo sem sair da página.</p>
+        </div>
+        <div class="catalog-expand-actions">
+          <button class="btn-expand-catalog" id="btn-toggle-expand-catalog">
+            <span id="btn-expand-text">Ver Mais Produtos (+12)</span>
+            <svg id="btn-expand-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <a href="catalogo.html" class="btn-goto-full-catalog" id="btn-goto-full-catalog">
+            <span>Página de Catálogo com Filtros</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -447,9 +541,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#home" class="logo">
-            <span class="logo-badge">€</span>
-            ESQUADRI<span>EURO</span>
+          <a href="#home" class="logo-brand" title="Esquadrieuro Esquadrias">
+            <img src="assets/images/logo-oficial.png" alt="Esquadrieuro Esquadrias" class="logo-img logo-img--footer">
           </a>
           <p class="footer-brand-desc">
             Esquadrias de alumínio de alto padrão, vidros temperados e distribuição oficial de ferragens e acessórios para construção civil desde 2015.
@@ -744,7 +837,7 @@
   <div class="toast-msg" id="toast">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="catalog-data.js?v=2025_v8"></script>
-  <script src="script.js?v=2025_v8"></script>
+  <script src="catalog-data.js?v=2025_v9"></script>
+  <script src="script.js?v=2025_v18"></script>
 </body>
 </html>

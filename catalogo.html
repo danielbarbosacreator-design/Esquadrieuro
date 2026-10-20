@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Completo de Produtos 2025 | Esquadrieuro Store</title>
+  <meta name="description" content="Catálogo completo oficial da Esquadrieuro: Esquadrias de alumínio, ferragens Stam, silicones, guarnições EPDM e parafusos inox em São Francisco do Sul - SC.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2025_v17">
+</head>
+<body style="background: var(--bg-alt);">
+
+  <!-- ==================== HEADER DA PÁGINA DE CATÁLOGO ==================== -->
+  <header class="catalog-page-header">
+    <div class="container catalog-page-header-inner">
+      <a href="index.html#produtos" class="btn-back-home" id="btn-back-home" title="Voltar para a página principal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Voltar ao Início</span>
+      </a>
+
+      <a href="index.html" class="logo-brand" title="Esquadrieuro">
+        <img src="assets/images/logo-horizontal-original.png" alt="Esquadrieuro" class="logo-img logo-img--header">
+      </a>
+
+      <div class="header-actions" style="margin-left:0;">
+        <button class="btn btn-outline btn-sm" id="btn-download-catalog-page" style="display:inline-flex;align-items:center;gap:.4rem;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span class="hide-mobile">Baixar PDF 2025</span>
+        </button>
+
+        <a href="https://wa.me/5547984474374?text=Ol%C3%A1%2C%20estou%20no%20cat%C3%A1logo%20e%20gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20produtos" target="_blank" class="btn btn-primary btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.043 3.804 3.786-.992z"/></svg>
+          <span class="hide-mobile">Falar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO STRIP ==================== -->
+  <section class="catalog-hero-strip">
+    <div class="container">
+      <div class="hero-v2-eyebrow" style="color:var(--gold);">
+        <span class="hero-v2-dot" style="background:var(--gold);"></span>
+        Catálogo Técnico Oficial 2025 &bull; Esquadrieuro Store
+      </div>
+      <h1>Catálogo Completo com Filtros</h1>
+      <p>Explore todos os 224 componentes, ferragens originais Stam, perfis de alumínio e guarnições com códigos oficiais para pronta entrega e orçamento imediato.</p>
+      
+      <div class="catalog-stats-row">
+        <div class="catalog-stat-pill">
+          <strong id="stat-total-prods">224</strong> Produtos Ativos
+        </div>
+        <div class="catalog-stat-pill">
+          <strong id="stat-total-cats">8</strong> Categorias Oficiais
+        </div>
+        <div class="catalog-stat-pill">
+          <strong>100%</strong> Fotos Reais do Catálogo
+        </div>
+        <div class="catalog-stat-pill">
+          <strong>São Francisco do Sul</strong> Pronta Entrega & Envio
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ÁREA PRINCIPAL DO CATÁLOGO ==================== -->
+  <main class="container" style="padding-bottom: 5rem;">
+    <!-- Barra de Ferramentas / Busca / Ordenação -->
+    <div class="catalog-toolbar">
+      <div class="catalog-toolbar-top">
+        <div class="catalog-search-full">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="catalog-page-search" placeholder="Buscar por código de fábrica (ex: CAV-38), nome ou descrição..." aria-label="Buscar produtos">
+          <button class="catalog-search-clear" id="catalog-page-clear-search" aria-label="Limpar busca">✕</button>
+        </div>
+
+        <div class="catalog-toolbar-actions">
+          <select id="catalog-sort-select" class="catalog-sort-select" aria-label="Ordenar produtos">
+            <option value="default">Ordenação Padrão</option>
+            <option value="name-asc">Nome: A → Z</option>
+            <option value="name-desc">Nome: Z → A</option>
+            <option value="code-asc">Código Oficial (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Abas de Filtro de Categorias -->
+      <div class="catalog-filter-tabs" id="catalog-page-category-tabs" style="margin-bottom: 0;">
+        <button class="cat-tab-btn active" data-category="all">
+          Todos os Produtos <span class="catalog-tab-badge" id="tab-count-all">224</span>
+        </button>
+        <button class="cat-tab-btn" data-category="portoes">
+          Acessórios p/ Portões <span class="catalog-tab-badge" id="tab-count-portoes">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="adesivos">
+          Adesivos & Selantes <span class="catalog-tab-badge" id="tab-count-adesivos">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="fechaduras">
+          Fechaduras Stam <span class="catalog-tab-badge" id="tab-count-fechaduras">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="ferragens">
+          Ferragens p/ Vidro <span class="catalog-tab-badge" id="tab-count-ferragens">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="guarnicoes">
+          Guarnições EPDM <span class="catalog-tab-badge" id="tab-count-guarnicoes">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="parafusos">
+          Parafusos & Inox <span class="catalog-tab-badge" id="tab-count-parafusos">0</span>
+        </button>
+        <button class="cat-tab-btn" data-category="rebites">
+          Rebites <span class="catalog-tab-badge" id="tab-count-rebites">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de Informações de Resultados -->
+    <div class="catalog-results-info">
+      <div>
+        <strong id="catalog-results-count" style="color:var(--navy-deep); font-size:1rem;">Exibindo 224 produtos</strong>
+        <span id="catalog-active-filter-label" style="margin-left:.5rem; font-size:.85rem;">em Todos os Produtos</span>
+      </div>
+      <button id="btn-reset-filters" style="background:none; border:none; color:var(--gold); font-size:.85rem; font-weight:700; cursor:pointer; text-decoration:underline; display:none;">
+        Limpar Filtros e Busca
+      </button>
+    </div>
+
+    <!-- Grid Completo de Produtos -->
+    <div class="catalog-products-grid" id="catalog-page-grid">
+      <!-- Inserido dinamicamente via JS -->
+    </div>
+
+    <!-- Botão Carregar Mais Produtos -->
+    <div class="catalog-load-more-wrap" id="catalog-load-more-wrap" style="display:none;">
+      <button class="btn-load-more" id="btn-load-more-products">
+        Carregar Mais Produtos
+      </button>
+      <span id="load-more-progress" style="font-size:.85rem; color:var(--text-muted);">
+        Mostrando 24 de 224 produtos
+      </span>
+    </div>
+  </main>
+
+  <!-- ==================== MODAL DE DETALHES ==================== -->
+  <dialog id="product-detail-modal">
+    <div class="modal-header">
+      <h3 id="modal-product-title">Detalhes do Produto</h3>
+      <button class="modal-close-btn" id="close-product-modal" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body-detail">
+      <div class="modal-prod-img">
+        <img id="modal-product-image" src="" alt="Imagem do produto">
+      </div>
+      <div class="modal-prod-info">
+        <span class="modal-code-tag" id="modal-product-code">CÓDIGO: -</span>
+        <h4 class="modal-prod-title" id="modal-product-name">Nome do Produto</h4>
+        <p class="modal-prod-desc" id="modal-product-desc">Descrição detalhada</p>
+
+        <div id="modal-colors-wrap">
+          <strong style="font-size: 0.85rem; color: var(--navy-deep); display: block; margin-bottom: 0.4rem;">Cores / Acabamentos Disponíveis:</strong>
+          <div class="modal-prod-colors" id="modal-product-colors"></div>
+        </div>
+
+        <a href="#" target="_blank" class="btn btn-primary" id="modal-whatsapp-btn" style="margin-top: auto; display:flex; align-items:center; justify-content:center; gap:.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.043 3.804 3.786-.992z"/></svg>
+          Solicitar Cotação no WhatsApp
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" style="padding-top: 3.5rem;">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo-brand" title="Esquadrieuro Esquadrias">
+          <img src="assets/images/logo-oficial.png" alt="Esquadrieuro Esquadrias" class="logo-img logo-img--footer">
+        </a>
+        <p class="footer-brand-desc">
+          Fábrica própria de esquadrias em alumínio e vidro temperado em São Francisco do Sul — SC. Desde 2015 criando soluções de alta resistência e estanqueidade.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-title">Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#home">Página Principal</a></li>
+          <li><a href="index.html#empresa">A Fábrica</a></li>
+          <li><a href="index.html#produtos">Destaques da Home</a></li>
+          <li><a href="index.html#localizacao">Como Chegar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Categorias</h4>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-cat-link" data-cat="fechaduras">Fechaduras Stam</a></li>
+          <li><a href="#" class="footer-cat-link" data-cat="portoes">Acessórios p/ Portões</a></li>
+          <li><a href="#" class="footer-cat-link" data-cat="adesivos">Adesivos & Selantes</a></li>
+          <li><a href="#" class="footer-cat-link" data-cat="ferragens">Ferragens p/ Vidro</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-title">Fábrica & Store</h4>
+        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 0.75rem;">
+          Rodovia Duque de Caxias Nº 5704, Reta<br>
+          São Francisco do Sul - SC | CEP: 89240-000
+        </p>
+        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6;">
+          WhatsApp: (47) 98447-4374<br>
+          Segunda a Sexta: 07:30 - 18:00
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2025 Esquadrieuro Esquadrias e Vidros. Todos os direitos reservados.</p>
+        <p>São Francisco do Sul — SC</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="catalog-data.js"></script>
+  <script src="catalogo.js"></script>
+</body>
+</html>

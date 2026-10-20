@@ -6,20 +6,40 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================================================
+  // 0. SCROLL REVEAL (IntersectionObserver)
+  // ==========================================================================
+  const revealEls = document.querySelectorAll('.reveal-up');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('revealed'));
+  }
+
+
+  // ==========================================================================
   // 1. ESTADO & STORAGE LOCAL (PRODUTOS, SÓCIOS E CATÁLOGO)
   // ==========================================================================
   const CATALOG_VERSION = '2025_v4_pdf_official';
   const STORAGE_KEYS = {
     VERSION: 'esquadrieuro_catalog_version',
     PRODUCTS: 'esquadrieuro_products_official_2025',
-    FOUNDERS: 'esquadrieuro_founders_v2',
+    FOUNDERS: 'esquadrieuro_founders_v3',
     PDF_LINK: 'esquadrieuro_pdf_link_v2',
     AUTH: 'esquadrieuro_admin_auth'
   };
 
-  // Limpa caches antigos para garantir fidelidade de 100% ao Catálogo Oficial 2025
+  const INITIAL_FOUNDERS = {
+    image: 'assets/images/proprietarios.jpg?v=2026_v1',
+    quote: 'Não entregamos apenas esquadrias; entregamos segurança, estanqueidade e o conforto visual que transforma uma obra em um verdadeiro lar.',
+    bio: 'Na Esquadrieuro, você conta com o acompanhamento direto dos próprios fundadores. Desde o alinhamento da planta arquitetônica com engenheiros e arquitetos até a conferência milimétrica das folgas e a instalação final, nossa diretoria garante que nenhum detalhe seja deixado ao acaso.'
+  };
+
+  // Limpa caches antigos para garantir fidelidade de 100% ao Catálogo Oficial e fotos atualizadas
   try {
-    ['esquadrieuro_products', 'esquadrieuro_products_v2', 'esquadrieuro_products_v2025', 'esquadrieuro_products_official_2025'].forEach(k => localStorage.removeItem(k));
+    ['esquadrieuro_products', 'esquadrieuro_products_v2', 'esquadrieuro_products_v2025', 'esquadrieuro_products_official_2025', 'esquadrieuro_founders_v2'].forEach(k => localStorage.removeItem(k));
   } catch(e) {}
 
   // Carrega produtos ou inicia com catálogo padrão
@@ -145,13 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFoundersSection();
 
   // ==========================================================================
-  // 5. MOTOR DO CATÁLOGO DE PRODUTOS (FILTROS, BUSCA E CARDS)
+  // 5. MOTOR DO CATÁLOGO DE PRODUTOS (FILTROS, BUSCA, 3 FILEIRAS & EXPANSÃO)
   // ==========================================================================
   const catalogContainer = document.getElementById('catalog-container');
   const catalogSearch = document.getElementById('catalog-search');
   const categoryTabs = document.querySelectorAll('.cat-tab-btn');
+  const expandFooter = document.getElementById('catalog-expand-footer');
+  const countBadge = document.getElementById('catalog-count-badge');
+  const btnToggleExpand = document.getElementById('btn-toggle-expand-catalog');
+  const btnExpandText = document.getElementById('btn-expand-text');
+
+  const ROW_LIMIT = 12; // 3 fileiras (4 colunas x 3 = 12 produtos)
   let currentCategory = 'all';
   let searchQuery = '';
+  let isCatalogExpanded = false;
 
   function renderCatalog() {
     if (!catalogContainer) return;
@@ -178,10 +205,42 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Tente buscar por outro termo ou selecione "Todos os Produtos".</p>
         </div>
       `;
+      if (expandFooter) expandFooter.style.display = 'none';
       return;
     }
 
-    catalogContainer.innerHTML = filtered.map(item => {
+    if (expandFooter) expandFooter.style.display = 'flex';
+
+    // Determina quais produtos exibir com base no estado de expansão
+    const displayProducts = isCatalogExpanded ? filtered : filtered.slice(0, ROW_LIMIT);
+
+    // Atualiza badges e botões de expansão
+    if (countBadge) {
+      if (isCatalogExpanded) {
+        countBadge.textContent = `Mostrando todos os ${filtered.length} produtos`;
+      } else {
+        const showing = Math.min(ROW_LIMIT, filtered.length);
+        countBadge.textContent = `Mostrando ${showing} de ${filtered.length} produtos`;
+      }
+    }
+
+    if (btnToggleExpand) {
+      if (filtered.length <= ROW_LIMIT) {
+        btnToggleExpand.style.display = 'none';
+      } else {
+        btnToggleExpand.style.display = 'inline-flex';
+        if (isCatalogExpanded) {
+          btnToggleExpand.classList.add('is-expanded');
+          if (btnExpandText) btnExpandText.textContent = 'Recolher para 3 Fileiras';
+        } else {
+          btnToggleExpand.classList.remove('is-expanded');
+          const remaining = filtered.length - ROW_LIMIT;
+          if (btnExpandText) btnExpandText.textContent = `Expandir Catálogo (+${remaining} produtos)`;
+        }
+      }
+    }
+
+    catalogContainer.innerHTML = displayProducts.map(item => {
       const codeDisplay = item.code ? `CÓD: ${item.code}` : '';
       const badgeDisplay = item.badge ? `<span class="product-badge-tag">${item.badge}</span>` : '';
       const lineDisplay = item.line ? `<div class="product-line-tag">${item.line}</div>` : '';
@@ -222,12 +281,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Toggle de expansão
+  if (btnToggleExpand) {
+    btnToggleExpand.addEventListener('click', () => {
+      isCatalogExpanded = !isCatalogExpanded;
+      renderCatalog();
+      if (!isCatalogExpanded) {
+        const target = document.getElementById('produtos');
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
   // Eventos de filtro por aba
   categoryTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       categoryTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       currentCategory = tab.getAttribute('data-category');
+      isCatalogExpanded = false; // reseta ao mudar categoria para sempre ver as 3 fileiras primeiro
       renderCatalog();
     });
   });
@@ -236,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (catalogSearch) {
     catalogSearch.addEventListener('input', (e) => {
       searchQuery = e.target.value;
+      isCatalogExpanded = false;
       renderCatalog();
     });
   }
