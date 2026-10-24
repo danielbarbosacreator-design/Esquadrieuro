@@ -123,7 +123,9 @@ strong{font-weight:700}
 .hero::before{content:'';position:absolute;top:var(--nav-h);right:0;bottom:0;width:72%;background:url('assets/images/fachada-esquadrieuro.webp') no-repeat center/cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 8%,rgba(0,0,0,.12) 16%,rgba(0,0,0,.26) 24%,rgba(0,0,0,.45) 32%,rgba(0,0,0,.66) 40%,rgba(0,0,0,.84) 48%,rgba(0,0,0,.95) 56%,#000 64%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 8%,rgba(0,0,0,.12) 16%,rgba(0,0,0,.26) 24%,rgba(0,0,0,.45) 32%,rgba(0,0,0,.66) 40%,rgba(0,0,0,.84) 48%,rgba(0,0,0,.95) 56%,#000 64%);pointer-events:none}
 .hero .container{position:relative;z-index:1}
 .hero-content{max-width:680px}
-.hero-kicker{font-size:.9375rem;color:rgba(255,255,255,.75);margin-bottom:24px}
+.hero-kicker{display:flex;align-items:center;gap:12px;font-size:.9375rem;color:rgba(255,255,255,.85);margin-bottom:24px}
+.hero-kicker::before{content:'';width:24px;height:2px;background:var(--gold);flex-shrink:0}
+.nowrap{white-space:nowrap}
 .hero-title{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1.05;letter-spacing:-.025em;color:#fff;margin-bottom:24px}
 .hero-title em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:1.125rem;line-height:1.65;color:rgba(255,255,255,.82);max-width:520px;margin-bottom:40px}
@@ -433,7 +435,7 @@ dialog::backdrop{background:rgba(15,23,51,.6)}
   .footer-grid > div:nth-child(3){grid-column:5 / 9}
   .footer-grid > div:nth-child(4){grid-column:9 / 13}
   /* Celular e tablet: foto inteira em cima, texto embaixo sobre o azul */
-  .hero{--hero-photo:clamp(280px,72vw,520px);display:block;min-height:auto;padding:calc(var(--nav-h) + var(--hero-photo) - 24px) 0 72px}
+  .hero{--hero-photo:clamp(280px,72vw,520px);display:block;min-height:auto;padding:calc(var(--nav-h) + var(--hero-photo) + 8px) 0 72px}
   .hero::before{width:100%;bottom:auto;height:var(--hero-photo);background-position:center 40%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%)}
 }
 
@@ -442,10 +444,10 @@ dialog::backdrop{background:rgba(15,23,51,.6)}
   .header-actions .btn{display:none}
   .logo-img--header{height:22px}
   .hero{padding-bottom:56px}
-  .hero-title{font-size:2rem}
-  .hero-title br{display:none}
-  .hero-kicker{margin-bottom:16px}
-  .hero-sub{font-size:1rem;margin-bottom:32px}
+  .hero-title{font-size:1.875rem;line-height:1.12;margin-bottom:16px}
+  .hero-kicker{font-size:.875rem;margin-bottom:16px}
+  .hide-sm{display:none}
+  .hero-sub{font-size:1rem;line-height:1.6;color:rgba(255,255,255,.78);margin-bottom:32px}
   .hero-ctas .btn{flex:1 1 100%}
   .fact dt{font-size:1.375rem}
   .fact{padding:24px 0 24px 16px}
