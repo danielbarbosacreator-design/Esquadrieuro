@@ -4,6 +4,8 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollEffects();
+
   // Dados de produtos
   function getProducts() {
     return typeof INITIAL_CATALOG !== 'undefined' ? [...INITIAL_CATALOG] : [];
@@ -114,12 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Atualiza labels de resultados
     if (resultsCountEl) {
-      resultsCountEl.textContent = `Exibindo ${filtered.length} produto${filtered.length === 1 ? '' : 's'}`;
+      resultsCountEl.textContent = `${filtered.length} produto${filtered.length === 1 ? '' : 's'}`;
     }
 
     if (activeFilterLabelEl) {
       const activeTab = document.querySelector('#catalog-page-category-tabs .cat-tab-btn.active');
-      const catName = activeTab ? activeTab.childNodes[0].textContent.trim() : 'Todos os Produtos';
+      const catName = activeTab ? activeTab.childNodes[0].textContent.trim() : 'Todos';
       activeFilterLabelEl.textContent = searchQuery 
         ? `para "${searchQuery}" em ${catName}` 
         : `em ${catName}`;
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (resetFiltersBtn) {
       const hasFilter = currentCategory !== 'all' || searchQuery !== '' || currentSort !== 'default';
-      resetFiltersBtn.style.display = hasFilter ? 'inline-block' : 'none';
+      resetFiltersBtn.hidden = !hasFilter;
     }
 
     // Empty state
@@ -139,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Tente buscar por outro código de peça ou remova os filtros aplicados.</p>
         </div>
       `;
-      if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+      if (loadMoreWrap) loadMoreWrap.hidden = true;
       return;
     }
 
@@ -147,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayList = filtered.slice(0, visibleLimit);
 
     gridContainer.innerHTML = displayList.map(item => {
-      const codeDisplay = item.code ? `CÓD: ${item.code}` : '';
+      const codeDisplay = item.code ? `Cód. ${item.code}` : '';
       const badgeDisplay = item.badge ? `<span class="product-badge-tag">${item.badge}</span>` : '';
       const lineDisplay = item.line ? `<div class="product-line-tag">${item.line}</div>` : '';
       const whatsappMsg = encodeURIComponent(`Olá! Gostaria de cotar o produto "${item.title}" (Código: ${item.code || 'S/N'}) do catálogo da Esquadrieuro.`);
@@ -181,16 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão de Carregar Mais
     if (loadMoreWrap) {
       if (visibleLimit < filtered.length) {
-        loadMoreWrap.style.display = 'flex';
+        loadMoreWrap.hidden = false;
         const remaining = filtered.length - visibleLimit;
         if (loadMoreBtn) {
-          loadMoreBtn.textContent = `Carregar Mais Produtos (+${Math.min(PAGE_BATCH_SIZE, remaining)})`;
+          loadMoreBtn.textContent = `Carregar mais ${Math.min(PAGE_BATCH_SIZE, remaining)}`;
         }
         if (loadMoreProgress) {
           loadMoreProgress.textContent = `Mostrando ${visibleLimit} de ${filtered.length} produtos`;
         }
       } else {
-        loadMoreWrap.style.display = 'none';
+        loadMoreWrap.hidden = true;
       }
     }
 
@@ -231,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         visibleLimit = PAGE_BATCH_SIZE;
         syncCategoryTabUI();
         render();
-        window.scrollTo({ top: 350, behavior: 'smooth' });
+        document.getElementById('catalog-toolbar').scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
@@ -296,13 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const wppBtn = document.getElementById('modal-whatsapp-btn');
 
     if (imgEl) imgEl.src = product.image ? (product.image + '?v=4') : 'assets/images/janelas.png';
-    if (codeEl) codeEl.textContent = product.code ? `CÓDIGO OFICIAL: ${product.code}` : 'PROJETO SOB MEDIDA';
+    if (codeEl) codeEl.textContent = product.code ? `Código ${product.code}` : 'Sob medida';
     if (nameEl) nameEl.textContent = product.title;
     if (descEl) descEl.textContent = product.description || '';
 
     if (product.colors && product.colors.length > 0) {
       if (colorsWrap) {
-        colorsWrap.innerHTML = product.colors.map(c => `<span class="color-chip" style="display:inline-block;padding:.3rem .7rem;border-radius:6px;background:var(--bg-alt);border:1px solid var(--border);font-size:.8rem;font-weight:600;color:var(--navy);margin:.2rem;">${c}</span>`).join('');
+        colorsWrap.innerHTML = product.colors.map(c => `<span class="color-chip">${c}</span>`).join('');
       }
       if (colorsBox) colorsBox.style.display = 'block';
     } else {
@@ -337,12 +339,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (downloadPdfBtn) {
     downloadPdfBtn.addEventListener('click', () => {
       const link = document.createElement('a');
-      link.href = 'assets/catalogo-esquadrieuro-store.pdf';
+      link.href = 'assets/catalogo-esquadrieuro-2025.pdf';
       link.download = 'Catalogo-Oficial-Esquadrieuro-Store-2025.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     });
+  }
+
+  // Header e menu mobile
+  const header = document.getElementById('header');
+  const navMenu = document.getElementById('nav-menu');
+  const mobileToggle = document.getElementById('mobile-toggle');
+  window.addEventListener('scroll', () => {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
   }
 
   // Render inicial

@@ -8,16 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // 0. SCROLL REVEAL (IntersectionObserver)
   // ==========================================================================
-  const revealEls = document.querySelectorAll('.reveal-up');
-  if (revealEls.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('revealed'));
-  }
-
+  renderObras();
+  initQuoteForm();
+  initScrollEffects();
 
   // ==========================================================================
   // 1. ESTADO & STORAGE LOCAL (PRODUTOS, SÓCIOS E CATÁLOGO)
@@ -99,21 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Link ativo de navegação
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
-    sections.forEach(current => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 140;
-      const sectionId = current.getAttribute('id');
-      const activeLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
-
-      if (activeLink) {
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          activeLink.classList.add('active');
-        } else {
-          activeLink.classList.remove('active');
-        }
-      }
+    // Apenas um link ativo: a última seção cujo topo já passou do header
+    const scrollY = window.pageYOffset + 140;
+    let currentId = null;
+    document.querySelectorAll('section[id]').forEach(section => {
+      if (section.offsetTop <= scrollY) currentId = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
     });
   });
 
@@ -159,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bioEl = document.getElementById('founders-bio');
 
     if (imgEl && founders.image) imgEl.src = founders.image;
-    if (quoteEl && founders.quote) quoteEl.textContent = `"${founders.quote}"`;
+    if (quoteEl && founders.quote) quoteEl.textContent = `“${founders.quote}”`;
     if (bioEl && founders.bio) bioEl.textContent = founders.bio;
   }
   renderFoundersSection();
@@ -231,17 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
         btnToggleExpand.style.display = 'inline-flex';
         if (isCatalogExpanded) {
           btnToggleExpand.classList.add('is-expanded');
-          if (btnExpandText) btnExpandText.textContent = 'Recolher para 3 Fileiras';
+          if (btnExpandText) btnExpandText.textContent = 'Mostrar menos';
         } else {
           btnToggleExpand.classList.remove('is-expanded');
           const remaining = filtered.length - ROW_LIMIT;
-          if (btnExpandText) btnExpandText.textContent = `Expandir Catálogo (+${remaining} produtos)`;
+          if (btnExpandText) btnExpandText.textContent = `Ver mais ${remaining} produtos`;
         }
       }
     }
 
     catalogContainer.innerHTML = displayProducts.map(item => {
-      const codeDisplay = item.code ? `CÓD: ${item.code}` : '';
+      const codeDisplay = item.code ? `Cód. ${item.code}` : '';
       const badgeDisplay = item.badge ? `<span class="product-badge-tag">${item.badge}</span>` : '';
       const lineDisplay = item.line ? `<div class="product-line-tag">${item.line}</div>` : '';
       const whatsappMsg = encodeURIComponent(`Olá! Gostaria de cotar o produto "${item.title}" (Código: ${item.code || 'S/N'}) do catálogo da Esquadrieuro.`);
@@ -331,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!product || !productModal) return;
 
     document.getElementById('modal-product-image').src = product.image ? (product.image + '?v=4') : 'assets/images/janelas.png';
-    document.getElementById('modal-product-code').textContent = product.code ? `CÓDIGO OFICIAL: ${product.code}` : 'PROJETO SOB MEDIDA';
+    document.getElementById('modal-product-code').textContent = product.code ? `Código ${product.code}` : 'Sob medida';
     document.getElementById('modal-product-name').textContent = product.title;
     document.getElementById('modal-product-desc').textContent = product.description || '';
 
@@ -729,3 +715,77 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// ==========================================================================
+// OBRAS ENTREGUES (dados em obras-data.js)
+// ==========================================================================
+function renderObras() {
+  const grid = document.getElementById('obras-grid');
+  if (!grid || typeof OBRAS === 'undefined') return;
+
+  const section = document.getElementById('obras');
+  if (!OBRAS.length) {
+    if (section) section.hidden = true;
+    return;
+  }
+
+  grid.innerHTML = OBRAS.map(obra => `
+    <article class="obras-card">
+      <div class="obras-img">
+        <img src="${obra.foto}" alt="${obra.titulo}, ${obra.cidade}" loading="lazy">
+        ${obra.exemplo ? '<span class="obras-sample">Foto ilustrativa</span>' : ''}
+      </div>
+      <p class="obras-meta">${obra.tipo} · ${obra.cidade}</p>
+      <h3>${obra.titulo}</h3>
+      ${obra.linha ? `<p class="obras-line">${obra.linha}</p>` : ''}
+    </article>
+  `).join('');
+}
+
+// ==========================================================================
+// FORMULÁRIO DE ORÇAMENTO → abre o WhatsApp com a mensagem pronta
+// ==========================================================================
+const QUOTE_WHATSAPP = '5547984474374';
+
+function initQuoteForm() {
+  const form = document.getElementById('quote-form');
+  if (!form) return;
+
+  const nome = form.querySelector('#q-nome');
+  const nomeError = form.querySelector('#q-nome-error');
+  const itensError = form.querySelector('#q-itens-error');
+  const getItens = () => [...form.querySelectorAll('input[name="itens"]:checked')].map(i => i.value);
+
+  const showError = (field, errorEl, show) => {
+    errorEl.classList.toggle('is-visible', show);
+    if (field) field.setAttribute('aria-invalid', show ? 'true' : 'false');
+  };
+
+  nome.addEventListener('input', () => { if (nome.value.trim()) showError(nome, nomeError, false); });
+  form.querySelectorAll('input[name="itens"]').forEach(box => {
+    box.addEventListener('change', () => { if (getItens().length) showError(null, itensError, false); });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const itens = getItens();
+    const nomeOk = nome.value.trim().length > 0;
+    showError(nome, nomeError, !nomeOk);
+    showError(null, itensError, itens.length === 0);
+    if (!nomeOk) { nome.focus(); return; }
+    if (!itens.length) return;
+
+    const detalhes = form.querySelector('#q-detalhes').value.trim();
+    const linhas = [
+      `Olá! Sou ${nome.value.trim()} e gostaria de um orçamento.`,
+      '',
+      `Obra: ${form.querySelector('#q-tipo').value} em ${form.querySelector('#q-cidade').value}`,
+      `Preciso de: ${itens.join(', ')}`
+    ];
+    if (detalhes) linhas.push(`Detalhes: ${detalhes}`);
+    linhas.push('', 'Posso enviar fotos ou a planta por aqui.');
+
+    const url = `https://wa.me/${QUOTE_WHATSAPP}?text=${encodeURIComponent(linhas.join('\n'))}`;
+    window.open(url, '_blank', 'noopener');
+  });
+}
